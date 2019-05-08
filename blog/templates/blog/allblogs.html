@@ -2,6 +2,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    {% load staticfiles %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -37,15 +38,15 @@
   <body class="p-0">
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">NourElDin Kamel</a>
+      <a class="navbar-brand" href="{% url 'home' %}">NourElDin Kamel</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link" href="#">Home</a>
-          <a class="nav-item nav-link" href="#">Resume</a>
-          <a class="nav-item nav-link active" href="#">Blog</a>
+          <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
+          <a class="nav-item nav-link" href="{% static 'resume.pdf' %}">Resume</a>
+          <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
         </div>
       </div>
     </nav>
@@ -89,7 +90,7 @@
       <img class="img-fluid" height=300 width=200 src="{{blog.image.url}}"></img>
       <div>
       <p class="media-body text-muted pt-2 small ">
-        <a href="google.com"><strong class="d-block text-gray-dark">{{ blog.title }}</strong></a>
+        <a href="{% url 'detail' blog.id %}"><strong class="d-block text-gray-dark">{{ blog.title }}</strong></a>
         {{ blog.summary }}
       </p>
       <p class="small text-muted border-gray pb-2"> {{ blog.out_date }}</p>
